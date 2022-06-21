@@ -6,7 +6,7 @@ const express = require('express');
 const notFoundHandler = require('./middleware/404');
 const internalError = require('./middleware/500');
 const logger = require('./middleware/logger');
-const userRoutes = require('./router');
+const userRouter = require('./router');
 require('dotenv').config();
 
 // Prepare the express app
@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Process FORM intput and put the data on req.body
 app.use(express.urlencoded({ extended: true }));
-app.use(userRoutes);
+app.use(userRouter);
 
 app.get('/', (req, res, next) => {
   res.status(200).send('Greetings!');
